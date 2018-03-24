@@ -1,0 +1,96 @@
+<div class="container">
+  <h4>New User Form</h4>
+  <form #userForm="ngForm" (ngSubmit)="submit(userForm)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" class="form-control" ngModel 
+            required minlength="5" maxlength="15" pattern="John Doe" #name="ngModel">
+      <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+        <p *ngIf="name.errors.required">UserName is required</p>
+        <p *ngIf="name.errors.minlength">UserName must be atleast 5 characters</p>
+        <p *ngIf="name.errors.maxlength">UserName must be atmax 20 characters</p>
+        <p *ngIf="name.errors.pattern">UserName must be 'John Doe'</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" name="username" class="form-control" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" name="email" class="form-control" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="text" name="phone" class="form-control" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="website">Website</label>
+      <input type="text" name="website" class="form-control" ngModel>
+    </div>
+    <div ngModelGroup="address">
+        <div class="form-group">
+          <label for="street">Street</label>
+          <input type="text" name="street" class="form-control" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="suite">Suite</label>
+          <input type="text" name="suite" class="form-control" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" name="city" class="form-control" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="zipcode">ZipCode</label>
+          <input type="text" name="zipcode" class="form-control" ngModel>
+        </div>
+        <div ngModelGroup="geo">
+          <div class="form-group">
+            <label for="lattitude">lattitude</label>
+            <input type="text" name="lattitude" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="longitude">longitude</label>
+            <input type="text" name="longitude" class="form-control" ngModel>
+          </div>
+        </div>
+    </div>
+    <div ngModelGroup="company">
+        <div class="form-group">
+          <label for="name">name</label>
+          <input type="street" name="name" class="form-control" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="catchPhrase">catchPhrase</label>
+          <input type="text" name="catchPhrase" class="form-control" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="bs">bs</label>
+          <input type="text" name="bs" class="form-control" ngModel>
+        </div>
+    </div>
+    <div class="radio">
+      <label for="gender" *ngFor="let g of gender">
+        <input type="radio"  name="gender" [value]="g" id="Check{{g}}" ngModel>{{g}}<br>
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="communicatiomModes">Communicatiom Modes</label>
+      <select name="communicatiomModes" class="form-control" ngModel>
+        <option value=""></option>
+        <option [value]="commOpt" *ngFor="let commOpt of communicatiomModes">{{commOpt}}</option>
+      </select>
+    </div>
+    <div class="checkbox">
+      <label for="agreement">
+        <input type="checkbox"  name="agreement" ngModel>I agree to the terms and conditions
+      </label>
+    </div>    
+    <pre>
+      {{userForm.value |json}}
+    </pre>
+    <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">Submit</button>
+    
+  </form>              
+</div>

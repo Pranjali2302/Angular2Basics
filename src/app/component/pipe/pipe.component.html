@@ -1,0 +1,19 @@
+<h4>Pipe</h4>
+<p>{{this.today | date | uppercase}}</p>
+<hr>
+
+<h4>Custom Pipe</h4>
+<div *ngIf="users">
+  <a href="{{users[0].email | appendor : 'pre' : 'mailto/'}}">{{users[0].email}}</a><br>
+  <a href="{{users[1].email | appendor : 'post' : '/tomail'}}">{{users[1].email}}</a>
+</div>
+<hr>
+
+<h4>Pure Impure Pipe</h4>
+
+<button class="btn btn-primary" (click)="addUser()">Add User</button><br>
+<ul class="list-group" *ngFor="let user of users| filter">
+  <li class="list-group-item">{{user.name}}</li>
+</ul>
+<hr>
+

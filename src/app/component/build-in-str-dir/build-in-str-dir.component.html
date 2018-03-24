@@ -1,0 +1,12 @@
+<button type="button" class="btn btn-default" (click)="changeGradient = !changeGradient">Toggle Class</button>
+<hr>
+<div [ngStyle]="{'width': '200px','height':'200px','border':'1px solid red'}">
+  <p [ngClass]="changeGradient?'red-gradient':'blue-gradient'">NgClass example</p>
+</div>
+<h4>NgNonBindable</h4>
+<p ngNonBindable>example of ng non bindable {{username}}</p>
+
+
+
+
+
